@@ -5,13 +5,14 @@ const StripeCallback = () => {
         const params = new URLSearchParams(window.location.search);
         const code = params.get('code'); // OAuth2 code from Stripe
         console.log('OAuth2 code:', code);
+        const token = localStorage.getItem('accessToken');
 
         // Send code to backend to exchange for connected account
         fetch('http://localhost:5000/exchange-code', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU4NTM5MTk0LCJpYXQiOjE3NTg1Mzg4OTQsImp0aSI6IjJhMmVhMDJhZTRkNDRhYmM5YTRmOWJlYTM2NDYyMjE3IiwidXNlcl9pZCI6IjEifQ.DiL1VExhgFfjL3c3X9YMSDVb8fMkMTEjYmWmpLAy6Dg'
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ code }),
         })

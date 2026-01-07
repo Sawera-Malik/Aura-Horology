@@ -71,12 +71,12 @@ export default function CheckoutForm() {
 
     try {
 
-      const token = localStorage.getItem('access_token') || '';
+      const token = localStorage.getItem('accessToken');
       const res = await fetch('https://clear-logical-kangaroo.ngrok-free.app/api/payments/create-payment/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNjAwOTg1LCJpYXQiOjE3NjA2MDA2ODUsImp0aSI6ImI5N2UwNjMxNTI5OTQ3MjBiMThhZTdhZmE5MTliYmI2IiwidXNlcl9pZCI6IjcifQ._3TXqtTjw90f-eqH-jgjc0z5eC93Oo_R7llj6Be9GYU'
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           amount: Number(amount),

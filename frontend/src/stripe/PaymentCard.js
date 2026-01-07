@@ -32,7 +32,7 @@ export default function PaymentComponent() {
     setResult(null);
 
     try {
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MzAwMDA4LCJpYXQiOjE3NTkyOTk3MDgsImp0aSI6ImIzN2E3Nzg2NTliNDQ0MjZhNTJkMGZhODIxZjc2NjRiIiwidXNlcl9pZCI6IjMifQ.Qcn32VqKFils5WRpaO-upr2CcPpK1OV_GHE0cPS_Lr8'; 
+      const token = localStorage.getItem('accessToken');
       const res = await axios.post(
         "https://clear-logical-kangaroo.ngrok-free.app/api/payments/create-payment/",
         {
